@@ -2,7 +2,9 @@
   <ul class="menu__inner menu__inner--desktop">
     {{ if or $.Site.Params.showMenuItems ( eq .Site.Params.showMenuItems 0 ) }}
       {{ range first $.Site.Params.showMenuItems $.Site.Menus.main }}
-        {{ if not .HasChildren }}
+        {{ if eq .Name "mastadon" }}
+          <li><a rel="me" href="{{ .URL }}">{{ .Name }}</a></li>
+        {{ else if not .HasChildren }}
           <li><a href="{{ .URL }}">{{ .Name }}</a></li>
         {{ end }}
       {{ end }}
